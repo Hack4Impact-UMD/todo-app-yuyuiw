@@ -54,7 +54,20 @@ const TaskTable = ({ tasks, toggleCompletion, deleteTask }) => {
             the task's id as a parameter.
         */}
         {tasks.map((task) => (
-          <p>REPLACE ME WITH YOUR ANSWER</p>
+          <TableRow key={task.id}>
+            <TableCell>{task.title}</TableCell>
+            <TableCell>{task.description}</TableCell>
+            <TableCell>{task.dueDate}</TableCell>
+            <TableCell>{task.completed}
+              <Checkbox checked={task.completed} onChange={() => toggleCompletion(task.id)}
+              />
+            </TableCell>
+            <TableCell>
+              <DeleteIcon onClick={() => deleteTask(task.id)}
+                sx={{ color: red[500], "&:hover": { cursor: "pointer" } }}
+              ></DeleteIcon>
+            </TableCell>
+          </TableRow>
         ))}
       </TableBody>
     </Table>
